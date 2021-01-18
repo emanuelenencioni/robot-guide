@@ -12,6 +12,7 @@ Questa libreria permette di utilizzare vari costrutti della geometria utilizzati
 # Esecuzione programma
 I test si possono fare dalla classe main, un input richiederà quale mappa utilizzare (in questo caso ce ne sono 2), inserendo 0 si accede alla prima mappa, inserendo qualsiasi altro valore si accede alla seconda mappa. Scelta la mappa, il programma  mostrarà un plot(ad esempio):
 ![Figure_1.png](Figure_1.png)
+
 In cui troviamo: lo stato di inizio(punto blu), lo stato di goal(punto giallo) e tutti i vari ostacoli presenti nella mappa(poligoni). Il programma chiederà poi quale algoritmo di ricerca usare: 1 - A*, 2 - Best first search (graph), 3 o qualsiasi altro numero - Breadth first search (graph). una volta scelto l'algoritmo,verrà eseguito e verrà mostrato un plot della mappa con il percorso trovato dall'algoritmo. Nel terminale verrà poi scritta la lista dei segmenti che compongono il cammino da inizio a goal e la sua lunghezza:
 dopo aver eseguito per esempio A*:
 ![Figure_2.png](Figure_2.png)
