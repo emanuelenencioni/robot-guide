@@ -4,18 +4,10 @@ import skgeom as sg
 from skgeom.draw import draw
 import matplotlib.pyplot as plt
 
-x = input("inserisci numero mappa:")
+x = input("inserisci numero mappa: 0 - mappa1, anything else - mappa2: ")
 plot = list()
-if x == "1":
-    plot.append(sg.Polygon([sg.Point2(2, 1), sg.Point2(7, 1), sg.Point2(2, 7)]))
-    plot.append(sg.Polygon([sg.Point2(5, 7), sg.Point2(10, 7), sg.Point2(10, 11), sg.Point2(5, 11)]))
-    plot.append(sg.Polygon([sg.Point2(9, 1), sg.Point2(13, 1), sg.Point2(14, 4), sg.Point2(11, 6), sg.Point2(8, 4)]))
-    plot.append(sg.Polygon([sg.Point2(12, 8), sg.Point2(15, 8), sg.Point2(13, 15), sg.Point2(11, 16), sg.Point2(10, 14)]))
-    plot.append(sg.Polygon([sg.Point2(15, 2), sg.Point2(22, 2), sg.Point2(20, 5), sg.Point2(15, 5)]))
-    plot.append(sg.Polygon([sg.Point2(19, 6), sg.Point2(22, 8), sg.Point2(22, 12), sg.Point2(20, 14), sg.Point2(17, 12), sg.Point2(17, 8)]))
-    plot.append(sg.Polygon([sg.Point2(28, 1), sg.Point2(31, 2), sg.Point2(31, 6), sg.Point2(29, 8), sg.Point2(25, 6), sg.Point2(25, 2)]))
-    end = sg.Point2(30, 14)
-else:
+
+if x == "0":
     plot.append(sg.Polygon([sg.Point2(0, 14), sg.Point2(1, 9), sg.Point2(7, 8), sg.Point2(9, 15), sg.Point2(6, 19)]))
     plot.append(sg.Polygon([sg.Point2(2, 6), sg.Point2(2, 1), sg.Point2(17, 1), sg.Point2(17, 6)]))
     plot.append(sg.Polygon([sg.Point2(10, 8), sg.Point2(14, 8), sg.Point2(12, 15)]))
@@ -25,7 +17,15 @@ else:
     plot.append(sg.Polygon([sg.Point2(28, 1), sg.Point2(31, 2), sg.Point2(31, 6), sg.Point2(29, 8), sg.Point2(25, 6), sg.Point2(25, 2)]))
     plot.append(sg.Polygon([sg.Point2(32, 8), sg.Point2(34, 16), sg.Point2(31, 19), sg.Point2(29, 17)]))
     end = sg.Point2(34, 19)
-
+else:
+    plot.append(sg.Polygon([sg.Point2(2, 1), sg.Point2(7, 1), sg.Point2(2, 7)]))
+    plot.append(sg.Polygon([sg.Point2(5, 7), sg.Point2(10, 7), sg.Point2(10, 11), sg.Point2(5, 11)]))
+    plot.append(sg.Polygon([sg.Point2(9, 1), sg.Point2(13, 1), sg.Point2(14, 4), sg.Point2(11, 6), sg.Point2(8, 4)]))
+    plot.append(sg.Polygon([sg.Point2(12, 8), sg.Point2(15, 8), sg.Point2(13, 15), sg.Point2(11, 16), sg.Point2(10, 14)]))
+    plot.append(sg.Polygon([sg.Point2(15, 2), sg.Point2(22, 2), sg.Point2(20, 5), sg.Point2(15, 5)]))
+    plot.append(sg.Polygon([sg.Point2(19, 6), sg.Point2(22, 8), sg.Point2(22, 12), sg.Point2(20, 14), sg.Point2(17, 12), sg.Point2(17, 8)]))
+    plot.append(sg.Polygon([sg.Point2(28, 1), sg.Point2(31, 2), sg.Point2(31, 6), sg.Point2(29, 8), sg.Point2(25, 6), sg.Point2(25, 2)]))
+    end = sg.Point2(30, 14)
 
 start = sg.Point2(1, 3)
 draw(start)
@@ -34,7 +34,13 @@ for x in plot:
         draw(x)
 plt.show()
 robot_route = classes.RobotRoute(start, end, plot)
-node = search.best_first_graph_search(robot_route, lambda n: n.path_cost)
+alg = input("inserire numero per algoritmo: 1 - A*, 2 - Best first search(graph), 3 or anything else - Breadth first search(graph)")
+if alg == "1":
+    node = search.astar_search(robot_route)
+elif alg == "2":
+    node = search.best_first_graph_search(robot_route, lambda n: n.path_cost)
+else:
+    node = search.bfs_graph_search(robot_route)
 
 print(node.solution())
 print(node.path_cost)
