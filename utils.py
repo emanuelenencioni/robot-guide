@@ -217,7 +217,7 @@ def rounder(numbers, d=4):
         return constructor(rounder(n, d) for n in numbers)
 
 
-def num_or_str(x):  # TODO: rename as `atom`
+def num_or_str(x):
     """The argument is a string; convert to a number if possible, or strip it."""
     try:
         return int(x)
