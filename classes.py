@@ -9,7 +9,7 @@ import matplotlib.patches as patches
 
 
 class Node:
-    """classe che definisce un nodo in un albero"""
+    """classe che definisce un nodo in un grafo"""
 
     def __init__(self, state, parent=None, action=None, path_cost=0):
         self.state = state
@@ -67,14 +67,14 @@ class RobotRoute:
 
         actions = list()
         for i in range(0, len(self.map)):
-            segments = segment_of_pol(state, self.map[i])
+            segments = self.__segment_of_pol(state, self.map[i])
             if segments is not None:
                 for j in range(0, len(self.map)):
                     if j != i:
                         length = len(segments)
                         idx = 0
                         while idx < length:
-                            if intersection_pol(segments[idx], self.map[j]):
+                            if self.__intersection_pol(segments[idx], self.map[j]):
                                 segments.remove(segments[idx])
                                 idx -= 1
                                 length -= 1
@@ -83,7 +83,7 @@ class RobotRoute:
                 actions.append(x)
         idx = 0
         while idx < len(self.map):
-            if intersection_pol(sg.Segment2(state, self.goal_state), self.map[idx]):
+            if self._intersection_pol(sg.Segment2(state, self.goal_state), self.map[idx]):
                 break
             idx += 1
         if idx == (len(self.map)):
@@ -112,43 +112,41 @@ class RobotRoute:
         seg = sg.Segment2(node.state, self.goal_state)
         return math.sqrt(seg.squared_length())
 
+    def __segment_of_pol(start, poly):
+        """ ritorna una lista di tutti i possibili vettori dal punto start a vertici del poligono poly"""
 
-def segment_of_pol(start, poly):
-    """ ritorna una lista di tutti i possibili vettori dal punto start a vertici del poligono poly"""
+        seg_vector = list()  # lista di ritorno con tutti i possibili vettori
+        vertices = list(poly.vertices)
+        if start in vertices:
+            for i in range(0, len(vertices)):
+                if start == vertices[i]:
+                    seg_vector.append(sg.Segment2(vertices[i], vertices[(i + 1) % len(vertices)]))
+                    seg_vector.append(sg.Segment2(vertices[i], vertices[(i - 1)]))
+            return seg_vector
 
-    seg_vector = list()  # lista di ritorno con tutti i possibili vettori
-    vertices = list(poly.vertices)
-    if start in vertices:
-        for i in range(0, len(vertices)):
-            if start == vertices[i]:
-                seg_vector.append(sg.Segment2(vertices[i], vertices[(i + 1) % len(vertices)]))
-                seg_vector.append(sg.Segment2(vertices[i], vertices[(i - 1)]))
+        for coord in poly.vertices:
+            ps = sg.Segment2(start, coord)
+            i = -1
+            while i < len(vertices) - 1:
+
+                if vertices[i + 1] != coord and vertices[i] != coord:
+                    if sg.intersection(ps, sg.Segment2(vertices[i], vertices[i + 1])) is not None:
+                        break
+                i += 1
+            if i == (len(vertices) - 1):
+                seg_vector.append(ps)
+
         return seg_vector
 
-    for coord in poly.vertices:
-        ps = sg.Segment2(start, coord)
-        i = -1
-        while i < len(vertices) - 1:
+    def __intersection_pol(seg, poly):
+        """funzione che controlla se un segmento passa attraverso un poligono"""
+        vertices = list(poly.vertices)
 
-            if vertices[i + 1] != coord and vertices[i] != coord:
-                if sg.intersection(ps, sg.Segment2(vertices[i], vertices[i + 1])) is not None:
-                    break
-            i += 1
-        if i == (len(vertices) - 1):
-            seg_vector.append(ps)
+        for i in range(-1, len(vertices) - 1):
+            p_int = sg.intersection(seg, sg.Segment2(vertices[i], vertices[i + 1]))
 
-    return seg_vector
+            if p_int is not None:
+                if p_int != seg[0]:
+                    return True
 
-
-def intersection_pol(seg, poly):
-    """funzione che controlla se un segmento passa attraverso un poligono"""
-    vertices = list(poly.vertices)
-
-    for i in range(-1, len(vertices) - 1):
-        p_int = sg.intersection(seg, sg.Segment2(vertices[i], vertices[i + 1]))
-
-        if p_int is not None:
-            if p_int != seg[0]:
-                return True
-
-    return False
+        return False
