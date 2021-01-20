@@ -38,7 +38,7 @@ alg = input("inserire numero per algoritmo: 1 - A*, 2 - Best first search(graph)
 if alg == "1":
     node = search.astar_search(robot_route)
 elif alg == "2":
-    node = search.best_first_graph_search(robot_route, lambda n: n.path_cost)
+    node = search.uniform_cost_graph_search(robot_route, lambda n: n.path_cost)
 else:
     node = search.bfs_graph_search(robot_route)
 

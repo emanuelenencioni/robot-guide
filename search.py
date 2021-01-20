@@ -2,14 +2,8 @@ from utils import *
 from classes import Node
 
 
-def best_first_graph_search(problem, f, display=False):
-    """Search the nodes with the lowest f scores first.
-    You specify the function f(node) that you want to minimize; for example,
-    if f is a heuristic estimate to the goal, then we have greedy best
-    first search; if f is node.depth then we have breadth-first search.
-    There is a subtlety: the line "f = memoize(f, 'f')" means that the f
-    values will be cached on the nodes as they are computed. So after doing
-    a best first search you can examine the f values of the path returned."""
+def uniform_cost_graph_search(problem, f, display=False):
+
     f = memoize(f, 'f')
     node = Node(problem.init_state)
     frontier = PriorityQueue('min', f)
@@ -43,7 +37,7 @@ def astar_search(problem, h=None, display=True):
     else in your Problem subclass."""
     h = memoize(h or problem.h, 'h')
 
-    return best_first_graph_search(problem, lambda n: n.path_cost + h(n), display)
+    return uniform_cost_graph_search(problem, lambda n: n.path_cost + h(n), display)
 
 
 def bfs_graph_search(problem):

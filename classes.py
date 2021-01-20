@@ -107,25 +107,25 @@ class RobotRoute:
         return cost + math.sqrt(seg.squared_length())
 
     def h(self, node):
-        """si utilizza euristica della distanza manhattan"""
+        """si utilizza euristica della distanza Euclidea"""
 
         seg = sg.Segment2(node.state, self.goal_state)
         return math.sqrt(seg.squared_length())
 
-    def __segment_of_pol(self, start, poly):
+    def __segment_of_pol(self, point, poly):
         """ ritorna una lista di tutti i possibili vettori dal punto start a vertici del poligono poly"""
 
         seg_vector = list()  # lista di ritorno con tutti i possibili vettori
         vertices = list(poly.vertices)
-        if start in vertices:
+        if point in vertices:
             for i in range(0, len(vertices)):
-                if start == vertices[i]:
+                if point == vertices[i]:
                     seg_vector.append(sg.Segment2(vertices[i], vertices[(i + 1) % len(vertices)]))
                     seg_vector.append(sg.Segment2(vertices[i], vertices[(i - 1)]))
             return seg_vector
 
         for coord in poly.vertices:
-            ps = sg.Segment2(start, coord)
+            ps = sg.Segment2(point, coord)
             i = -1
             while i < len(vertices) - 1:
 
