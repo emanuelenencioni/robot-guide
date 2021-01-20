@@ -27,7 +27,7 @@ class Node:
         """funzione che  crea un nodo partendo dal risultato di una azione dello stato corrente"""
 
         new_state = problem.result(action, self.state)
-        next_node = Node(new_state, self, action, problem.path_cost(self.path_cost, self.state, new_state))
+        next_node = Node(new_state, self, action, problem.path_cost(self.path_cost, self.state, action))
         return next_node
 
     def solution(self):
@@ -83,7 +83,7 @@ class RobotRoute:
                 actions.append(x)
         idx = 0
         while idx < len(self.map):
-            if self._intersection_pol(sg.Segment2(state, self.goal_state), self.map[idx]):
+            if self.__intersection_pol(sg.Segment2(state, self.goal_state), self.map[idx]):
                 break
             idx += 1
         if idx == (len(self.map)):
@@ -102,8 +102,8 @@ class RobotRoute:
 
         return state == self.goal_state
 
-    def path_cost(self, cost, state, new_state):
-        seg = sg.Segment2(state, new_state)
+    def path_cost(self, cost, state, action):
+        seg = sg.Segment2(state, action[1])
         return cost + math.sqrt(seg.squared_length())
 
     def h(self, node):
@@ -112,7 +112,7 @@ class RobotRoute:
         seg = sg.Segment2(node.state, self.goal_state)
         return math.sqrt(seg.squared_length())
 
-    def __segment_of_pol(start, poly):
+    def __segment_of_pol(self, start, poly):
         """ ritorna una lista di tutti i possibili vettori dal punto start a vertici del poligono poly"""
 
         seg_vector = list()  # lista di ritorno con tutti i possibili vettori
@@ -138,7 +138,7 @@ class RobotRoute:
 
         return seg_vector
 
-    def __intersection_pol(seg, poly):
+    def __intersection_pol(self, seg, poly):
         """funzione che controlla se un segmento passa attraverso un poligono"""
         vertices = list(poly.vertices)
 
