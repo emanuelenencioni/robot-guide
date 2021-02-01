@@ -13,10 +13,11 @@ Questa libreria permette di utilizzare vari costrutti della geometria utilizzati
 I test si possono fare dalla classe main, un input richiederà quale mappa utilizzare (in questo caso ce ne sono 2), inserendo 0 si accede alla prima mappa, inserendo qualsiasi altro valore si accede alla seconda mappa. Scelta la mappa, il programma  mostrerà un plot(ad esempio):
 ![Figure_1.png](Figure_1.png)
 
-In cui troviamo: lo stato di inizio(punto blu), lo stato di goal(punto giallo) e tutti i vari ostacoli presenti nella mappa(poligoni). Il programma chiederà poi quale algoritmo di ricerca usare: 1 - A*, 2 - Best first search (graph), 3 o qualsiasi altro numero - Breadth first search (graph). una volta scelto l'algoritmo,verrà eseguito e verrà mostrato un plot della mappa con il percorso trovato dall'algoritmo. Nel terminale verrà poi scritta la lista dei segmenti che compongono il cammino da inizio a goal e la sua lunghezza,
+In cui troviamo: lo stato di inizio(punto blu), lo stato di goal(punto giallo) e tutti i vari ostacoli presenti nella mappa(poligoni). Il programma chiederà poi quale algoritmo di ricerca usare: 1 - A* (graph)*, 2 - Uniform cost search (graph), 3 o qualsiasi altro numero - Breadth first search (graph). una volta scelto l'algoritmo,verrà eseguito e verrà mostrato un plot della mappa con il percorso trovato dall'algoritmo. Nel terminale verrà poi scritta la lista dei segmenti che compongono il cammino da inizio a goal e la sua lunghezza,
 dopo aver eseguito per esempio A*:
 ![Figure_2.png](Figure_2.png)
 
 # Codice di altre repository
 Il codice del file utils.py, come il codice di astar e best first search è stato preso dalla repository https://github.com/aimacode.
 
+*(graph): indica la versione usata dell'algoritmo. Questo utilizza una lista chiusa per memorizzare i nodi già esplorati in modo da non esplorarli di nuovo.

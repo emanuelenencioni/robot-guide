@@ -2,7 +2,7 @@ from utils import *
 from classes import Node
 
 
-def uniform_cost_graph_search(problem, f, display=False):
+def best_first_graph_search(problem, f, display=False):
 
     f = memoize(f, 'f')
     node = Node(problem.init_state)
@@ -35,7 +35,7 @@ def astar_search(problem, h=None, display=True):
 
     h = memoize(h or problem.h, 'h')
 
-    return uniform_cost_graph_search(problem, lambda n: n.path_cost + h(n), display)
+    return best_first_graph_search(problem, lambda n: n.path_cost + h(n), display)
 
 
 def bfs_graph_search(problem):

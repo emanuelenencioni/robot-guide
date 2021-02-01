@@ -34,11 +34,11 @@ for x in plot:
         draw(x)
 plt.show()
 robot_route = classes.RobotRoute(start, end, plot)
-alg = input("inserire numero per algoritmo: 1 - A*, 2 - Best first search(graph), 3 or anything else - Breadth first search(graph)")
+alg = input("inserire numero per algoritmo: 1 - A*, 2 - Unifirm cost search(graph), 3 or anything else - Breadth first search(graph)")
 if alg == "1":
     node = search.astar_search(robot_route)
 elif alg == "2":
-    node = search.uniform_cost_graph_search(robot_route, lambda n: n.path_cost)
+    node = search.best_first_graph_search(robot_route, lambda n: n.path_cost)
 else:
     node = search.bfs_graph_search(robot_route)
 
