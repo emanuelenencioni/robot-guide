@@ -3,13 +3,11 @@ README
 # Robot-guide
 robot guide through a 2d map with polygon obstacles using searching algorithms
 
-# Installazione librerie
-Per usare questo programma occorre innanzitutto scaricare la libreria https://github.com/scikit-geometry/scikit-geometry disponibile usando il comando conda:
+# Libraries installation
+This program use  https://github.com/scikit-geometry/scikit-geometry available using this command:
 `conda install scikit-geometry -c conda-forge`
 
-Questa libreria permette di utilizzare vari costrutti della geometria utilizzati nell'esercizio.
-
-# Esecuzione programma
+# Test demo
 I test si possono fare dalla classe main, un input richiederà quale mappa utilizzare (in questo caso ce ne sono 2), inserendo 0 si accede alla prima mappa, inserendo qualsiasi altro valore si accede alla seconda mappa. Scelta la mappa, il programma  mostrerà un plot(ad esempio):
 ![Figure_1.png](Figure_1.png)
 
