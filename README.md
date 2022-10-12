@@ -5,6 +5,7 @@ robot guide through a 2d map with polygon obstacles using searching algorithms
 
 # Libraries installation
 This program use  https://github.com/scikit-geometry/scikit-geometry available using this command:
+
 `conda install scikit-geometry -c conda-forge`
 
 # Test demo
