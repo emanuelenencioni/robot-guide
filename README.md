@@ -1,7 +1,7 @@
 README
 
 # Robot-guide
-robot guide through a 2d map with polygon obstacles using searching algorithms
+robot guide through a 2d map with convx polygon obstacles using searching algorithms. Each vertex of the polygons represents a point where the robot can move.
 
 # Libraries installation
 This program use  https://github.com/scikit-geometry/scikit-geometry available using this command:
@@ -9,14 +9,19 @@ This program use  https://github.com/scikit-geometry/scikit-geometry available u
 `conda install scikit-geometry -c conda-forge`
 
 # Test demo
-I test si possono fare dalla classe main, un input richiederà quale mappa utilizzare (in questo caso ce ne sono 2), inserendo 0 si accede alla prima mappa, inserendo qualsiasi altro valore si accede alla seconda mappa. Scelta la mappa, il programma  mostrerà un plot(ad esempio):
+The tests can be used by running main.py. After running it, a prompt message show and here we can choose the map to run the tests: (I implemented only two maps), inserting 0 we can access to the first map, any other value make you choose the second map. After choosing it, the program will plot it(e. g.):
 ![Figure_1.png](Figure_1.png)
 
-In cui troviamo: lo stato di inizio(punto blu), lo stato di goal(punto giallo) e tutti i vari ostacoli presenti nella mappa(poligoni). Il programma chiederà poi quale algoritmo di ricerca usare: 1 - A* (graph)*, 2 - Uniform cost search (graph), 3 o qualsiasi altro numero - Breadth first search (graph). una volta scelto l'algoritmo,verrà eseguito e verrà mostrato un plot della mappa con il percorso trovato dall'algoritmo. Nel terminale verrà poi scritta la lista dei segmenti che compongono il cammino da inizio a goal e la sua lunghezza,
-dopo aver eseguito per esempio A*:
+Here we can see the start state (blue dot), the goal state (yeollow dot) and all obstacles to navigate through (convex polygons). The program will then ask for the searching algorithm to use in the graph* form:
+1. A* algorithm
+2. Uniform cost search algorithm
+3. (or any other input) Breadth first search algorithm
+
+ Once algorithm is chosen, it will be executed and a plot of the map will be shown with the path found by the algorithm. The list of segments making up the path from start to goal and its length will then be written into the terminal. 
+The plot using A* is shown below:
 ![Figure_2.png](Figure_2.png)
 
-# Codice di altre repository
-Il codice del file utils.py, come il codice di astar e best first search è stato preso dalla repository https://github.com/aimacode.
+# Code from other repositories
+The code for the utils.py file, like the code for A* and Best First Search was taken from the repository https://github.com/aimacode.
 
-*(graph): indica la versione usata dell'algoritmo. Questo utilizza una lista chiusa per memorizzare i nodi già esplorati in modo da non esplorarli di nuovo.
+* indicates the version of the algorithm used. This uses a closed list to store already explored nodes so that they are not explored again.
