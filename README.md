@@ -15,6 +15,7 @@ The tests can be used by running main.py. After running it, a prompt message is 
 1. (or any other value) to choose the second map. 
 
 After choosing it, the program will plot it(e. g.):
+
 ![Figure_1.png](Figure_1.png)
 
 Here we can see the start state (blue dot), the goal state (yeollow dot) and all obstacles to navigate through (convex polygons). The program will then ask for the searching algorithm to use in the graph* form:
