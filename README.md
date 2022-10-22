@@ -30,4 +30,4 @@ The plot using A* is shown below:
 # Code from other repositories
 The code for the utils.py file, like the code for A* and Best First Search was taken from the repository https://github.com/aimacode.
 
-* indicates the version of the algorithm used. This uses a closed list to store already explored nodes so that they are not explored again.
+graph* indicates the version of the algorithm used. This uses a closed list to store already explored nodes so that they are not explored again.
