@@ -10,8 +10,10 @@ This program use  https://github.com/scikit-geometry/scikit-geometry available u
 
 # Test demo
 The tests can be used by running main.py. After running it, a prompt message is shown asking for the map to be used for testing(I implemented only two maps):
+
 0. to access the first map, 
 1. (or any other value) to choose the second map. 
+
 After choosing it, the program will plot it(e. g.):
 ![Figure_1.png](Figure_1.png)
 
