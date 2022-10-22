@@ -1,7 +1,7 @@
 README
 
 # Robot-guide
-robot guide through a 2d map with convx polygon obstacles using searching algorithms. Each vertex of the polygons represents a point where the robot can move.
+robot guide through a 2d map with convx polygon obstacles using searching algorithms. Each vertex of the polygons represents a point at which the robot can move.
 
 # Libraries installation
 This program use  https://github.com/scikit-geometry/scikit-geometry available using this command:
