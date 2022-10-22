@@ -18,7 +18,7 @@ After choosing it, the program will plot it(e. g.):
 
 ![Figure_1.png](Figure_1.png)
 
-Here we can see the start state (blue dot), the goal state (yeollow dot) and all obstacles to navigate through (convex polygons). The program will then ask for the searching algorithm to use in the graph* form:
+Here we can see the start state (blue dot), the goal state (yeollow dot) and all obstacles to navigate through (convex polygons). The program will then ask for the searching algorithm to use in the graph form*:
 1. A* algorithm
 2. Uniform cost search algorithm
 3. (or any other value) Breadth first search algorithm
@@ -30,4 +30,4 @@ The plot using A* is shown below:
 # Code from other repositories
 The code for the utils.py file, like the code for A* and Best First Search was taken from the repository https://github.com/aimacode.
 
-graph* indicates the version of the algorithm used. This uses a closed list to store already explored nodes so that they are not explored again.
+_* indicates the version of the algorithm used. This uses a closed list to store already explored nodes so that they are not explored again._
