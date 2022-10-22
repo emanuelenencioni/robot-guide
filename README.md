@@ -9,13 +9,16 @@ This program use  https://github.com/scikit-geometry/scikit-geometry available u
 `conda install scikit-geometry -c conda-forge`
 
 # Test demo
-The tests can be used by running main.py. After running it, a prompt message show and here we can choose the map to run the tests: (I implemented only two maps), inserting 0 we can access to the first map, any other value make you choose the second map. After choosing it, the program will plot it(e. g.):
+The tests can be used by running main.py. After running it, a prompt message is shown asking for the map to be used for testing(I implemented only two maps):
+0. to access the first map, 
+1. (or any other value) to choose the second map. 
+After choosing it, the program will plot it(e. g.):
 ![Figure_1.png](Figure_1.png)
 
 Here we can see the start state (blue dot), the goal state (yeollow dot) and all obstacles to navigate through (convex polygons). The program will then ask for the searching algorithm to use in the graph* form:
 1. A* algorithm
 2. Uniform cost search algorithm
-3. (or any other input) Breadth first search algorithm
+3. (or any other value) Breadth first search algorithm
 
  Once algorithm is chosen, it will be executed and a plot of the map will be shown with the path found by the algorithm. The list of segments making up the path from start to goal and its length will then be written into the terminal. 
 The plot using A* is shown below:
